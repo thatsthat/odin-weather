@@ -12,12 +12,14 @@
 
 <body>
   <div id="container">
-    <div id="header">Barcelona, September 7, 09:32</div>
+    <div id="header"><span id="cityVal">Barcelona</span>, <span id="dateVal">September 7, 09:32</span></div>
     <div id="main">
       <div id="left">
-        <div id="humidity">Humidity: 79%</div>
-        <div id="temp">26<sup>°C</sup></div>
-        <div id="feelsLike">Feels like 27°</div>
+        <div id="humidity">Humidity: <span id="humVal">79</span>%</div>
+        <div id="temp">
+          <div id="tempVal">26</div><sup>°C</sup>
+        </div>
+        <div id="feelsLike">Feels like <span id="feelsVal">27</span>°</div>
       </div>
       <div id="right">
         <img id='icon' src="https://openweathermap.org/img/wn/01d@4x.png" alt="">

@@ -1,6 +1,16 @@
 const container = document.getElementById("container");
+const temp = document.getElementById("tempVal");
+const hum = document.getElementById("humVal");
+const feels = document.getElementById("feelsVal");
+const summary = document.getElementById("summary");
+const icon = document.getElementById("icon");
+
 getWeather("Barcelona").then((data) => {
-  //container.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+  temp.textContent = Math.round(data.main.temp);
+  hum.textContent = data.main.humidity;
+  feels.textContent = Math.round(data.main.feels_like);
+  summary.textContent = data.weather[0].description;
+  icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
 });
 async function getWeather(city) {
   try {
