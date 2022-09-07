@@ -1,6 +1,6 @@
 const container = document.getElementById("container");
 getWeather("Barcelona").then((data) => {
-  container.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+  //container.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
 });
 async function getWeather(city) {
   try {

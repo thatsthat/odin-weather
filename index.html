@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
-    />
-    <title>Odin Weather App</title>
-  </head>
-  <body>
-    <div id="container"></div>
-    <script src="index.js" defer></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+  <title>Odin Weather App</title>
+</head>
+
+<body>
+  <div id="container">
+    <div id="header">Barcelona, September 7, 09:32</div>
+    <div id="main">
+      <div id="left">
+        <div id="humidity">Humidity: 79%</div>
+        <div id="temp">26<sup>°C</sup></div>
+        <div id="feelsLike">Feels like 27°</div>
+      </div>
+      <div id="right">
+        <img id='icon' src="https://openweathermap.org/img/wn/01d@4x.png" alt="">
+        <div id="summary">Sunny</div>
+      </div>
+    </div>
+    <div id="search">
+      <div><input type="text" id="searchBox"></input>
+      </div>
+      <div>
+        <button id='searchButton'>Search</button>
+      </div>
+    </div>
+    <div id='error'>Ooooops, city not found!</div>
+  </div>
+  <script src="index.js" defer></script>
+</body>
+
 </html>
