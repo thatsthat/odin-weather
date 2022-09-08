@@ -12,7 +12,7 @@ const plainHTML = `<div id="container">
         <div id="feelsLike">Feels like <span id="feelsVal"></span>°</div>
       </div>
       <div id="right">
-        <img id='icon' src="https://openweathermap.org/img/wn/01d@4x.png" alt="">
+        <img id='icon' alt="">
         <div id="summary"></div>
       </div>
     </div>
