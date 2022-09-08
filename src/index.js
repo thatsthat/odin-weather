@@ -34,25 +34,41 @@ const hum = document.getElementById("humVal");
 const feels = document.getElementById("feelsVal");
 const summary = document.getElementById("summary");
 const icon = document.getElementById("icon");
-const city = document.getElementById("cityVal");
+const cityVal = document.getElementById("cityVal");
 const date = document.getElementById("dateVal");
+const errorMessage = document.getElementById("error");
+const myButton = document.getElementById("searchButton");
+const inpBox = document.getElementById("searchBox");
 
-getWeather("Barcelona").then((data) => {
-  city.textContent = data.name;
-  date.textContent = format(new Date(), "MMMM' 'd', ' H:mm");
-  temp.textContent = Math.round(data.main.temp);
-  hum.textContent = data.main.humidity;
-  feels.textContent = Math.round(data.main.feels_like);
-  summary.textContent = data.weather[0].description;
-  icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+myButton.addEventListener("click", () => {
+  getWeather(inpBox.value);
+  inpBox.value = "";
 });
+
+// 'Enter' key is equivalent to done button click
+inpBox.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) myButton.click();
+});
+
+getWeather("Barcelona");
+
 async function getWeather(city) {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=328f6f4253135075c7f774bc325350c4`,
       { mode: "cors" }
     );
-    const weatherData = await response.json();
-    return weatherData;
-  } catch (error) {}
+    const data = await response.json();
+    console.log(city.textContent);
+    cityVal.textContent = data.name;
+    date.textContent = format(new Date(), "MMMM' 'd', ' H:mm");
+    temp.textContent = Math.round(data.main.temp);
+    hum.textContent = data.main.humidity;
+    feels.textContent = Math.round(data.main.feels_like);
+    summary.textContent = data.weather[0].description;
+    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+  } catch (error) {
+    console.log(error);
+    errorMessage.style.display = "block";
+  }
 }
