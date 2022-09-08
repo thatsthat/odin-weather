@@ -61,7 +61,10 @@ async function getWeather(city) {
     const data = await response.json();
     console.log(city.textContent);
     cityVal.textContent = data.name;
-    date.textContent = format(new Date(), "MMMM' 'd', ' H:mm");
+    date.textContent = format(
+      new Date.UTC(data.dt + data.timezone),
+      "MMMM' 'd', ' H:mm"
+    );
     temp.textContent = Math.round(data.main.temp);
     hum.textContent = data.main.humidity;
     feels.textContent = Math.round(data.main.feels_like);
