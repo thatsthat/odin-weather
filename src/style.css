@@ -1,0 +1,95 @@
+* {
+  font-family: "Roboto";
+  font-size: 16px;
+  background-color: #4db7dd;
+  /*   margin: 0;
+  border: 1px solid white;
+  margin: 1px; */
+}
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#header {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 10px lightgrey;
+  margin: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+#cityVal,
+#dateVal {
+  font-size: 1.5rem;
+}
+#main {
+  display: flex;
+  margin: 0.5rem 1rem;
+  margin-bottom: 3rem;
+  color: white;
+  text-shadow: 1px 1px 4px black;
+  gap: 3rem;
+}
+#left {
+  display: flex;
+  flex-direction: column;
+}
+#right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#humidity,
+#humidity > * {
+  font-size: 1.2rem;
+  margin: 0.5rem 0rem;
+}
+#feelsLike,
+#feelsLike > * {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+#temp,
+#tempVal {
+  display: inline;
+  font-size: 7rem;
+}
+#temp > sup {
+  font-size: 4rem;
+}
+#icon {
+  margin-bottom: -20px;
+}
+#summary {
+  font-size: 1.2rem;
+}
+#search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#searchBox {
+  background-color: white;
+  margin-top: 1rem;
+  width: 15rem;
+  height: 2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+#searchButton {
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 1rem 0rem;
+  user-select: none;
+  background-color: white;
+}
+#error {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  display: none;
+}
+input:focus {
+  outline: none;
+}
