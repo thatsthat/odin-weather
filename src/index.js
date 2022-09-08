@@ -1,4 +1,4 @@
-import format from "date-fns";
+import { format } from "date-fns";
 import "./style.css";
 
 const plainHTML = `<div id="container">
@@ -35,9 +35,11 @@ const feels = document.getElementById("feelsVal");
 const summary = document.getElementById("summary");
 const icon = document.getElementById("icon");
 const city = document.getElementById("cityVal");
+const date = document.getElementById("dateVal");
 
 getWeather("Barcelona").then((data) => {
   city.textContent = data.name;
+  date.textContent = format(new Date(), "MMMM' 'd', ' H:mm");
   temp.textContent = Math.round(data.main.temp);
   hum.textContent = data.main.humidity;
   feels.textContent = Math.round(data.main.feels_like);
