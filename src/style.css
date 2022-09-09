@@ -2,7 +2,6 @@
 
 * {
   font-family: "Roboto";
-  font-size: 16px;
   background-color: #4db7dd;
   /*   margin: 0;
   border: 1px solid white;
@@ -14,14 +13,15 @@
   align-items: center;
 }
 #header {
-  font-size: 1.5rem;
   text-shadow: 1px 1px 10px lightgrey;
+  font-size: 1.2rem;
   margin: 0.5rem 1rem;
   margin-bottom: 0rem;
 }
 #cityVal,
 #dateVal {
-  font-size: 1.5rem;
+  display: inline;
+  font-size: 1.2rem;
 }
 #main {
   display: flex;

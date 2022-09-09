@@ -2,12 +2,12 @@ import { format } from "date-fns-tz";
 import "./style.css";
 
 const plainHTML = `<div id="container">
-    <div id="header"><span id="cityVal"></span>, <span id="dateVal">September 8, 09:32</span></div>
+    <div id="header"><span id="cityVal"></span>, <span id="dateVal"></span></div>
     <div id="main">
       <div id="left">
         <div id="humidity">Humidity: <span id="humVal"></span>%</div>
         <div id="temp">
-          <div id="tempVal"></div><sup>°C</sup>
+          <div id="tempVal"></div><sup><span id="tempUnit"></span></sup>
         </div>
         <div id="feelsLike">Feels like <span id="feelsVal"></span>°</div>
       </div>
@@ -25,11 +25,11 @@ const plainHTML = `<div id="container">
         </div>
           <div id="tempToggle">
           <div>
-            <input type="radio" id="C" name="tFormat" value="C">
+            <input type="radio" id="C" name="tFormat" value="°C" checked>
             <label for="C">°C</label>
           </div>
           <div>
-            <input type="radio" id="F" name="tFormat" value="F">
+            <input type="radio" id="F" name="tFormat" value="°F">
             <label for="F">°F</label>
           </div>
          </div>
@@ -39,6 +39,10 @@ const plainHTML = `<div id="container">
   </div>`;
 
 document.body.innerHTML = plainHTML;
+
+const tempForm = document.querySelector('input[type="radio"]:checked');
+const tUnit = document.getElementById("tempUnit");
+tUnit.textContent = tempForm.value;
 
 const container = document.getElementById("container");
 const temp = document.getElementById("tempVal");
@@ -51,10 +55,36 @@ const date = document.getElementById("dateVal");
 const errorMessage = document.getElementById("error");
 const myButton = document.getElementById("searchButton");
 const inpBox = document.getElementById("searchBox");
+var cityName = "";
 
 myButton.addEventListener("click", () => {
-  getWeather(inpBox.value);
+  cityName = inpBox.value;
+  const tempFormat = "";
+  if (document.querySelector('input[type="radio"]:checked').id == "C") {
+    getWeather(cityName, "metric");
+  } else {
+    getWeather(cityName, "imperial");
+  }
   inpBox.value = "";
+});
+
+const radio1 = document.getElementById("C");
+const radio2 = document.getElementById("F");
+
+radio1.addEventListener("click", (event) => {
+  const tForm = document.querySelector('input[type="radio"]:checked');
+  tUnit.textContent = document.querySelector(
+    'input[type="radio"]:checked'
+  ).value;
+  getWeather(cityName, "metric");
+});
+
+radio2.addEventListener("click", (event) => {
+  const tForm = document.querySelector('input[type="radio"]:checked');
+  tUnit.textContent = document.querySelector(
+    'input[type="radio"]:checked'
+  ).value;
+  getWeather(cityName, "imperial");
 });
 
 // 'Enter' key is equivalent to done button click
@@ -62,12 +92,15 @@ inpBox.addEventListener("keydown", (event) => {
   if (event.keyCode === 13) myButton.click();
 });
 
-getWeather("Barcelona");
+getWeather(cityName, "metric");
 
-async function getWeather(city) {
+async function getWeather(city, tFormat) {
   try {
+    if (!city) {
+      city = "barcelona";
+    }
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=328f6f4253135075c7f774bc325350c4`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${tFormat}&appid=328f6f4253135075c7f774bc325350c4`,
       { mode: "cors" }
     );
     const data = await response.json();
