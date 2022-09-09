@@ -17,7 +17,7 @@
   font-size: 1.5rem;
   text-shadow: 1px 1px 10px lightgrey;
   margin: 0.5rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 #cityVal,
 #dateVal {
@@ -25,11 +25,11 @@
 }
 #main {
   display: flex;
-  margin: 0.5rem 1rem;
-  margin-bottom: 3rem;
+  margin: 0.5rem 0rem;
+  margin-bottom: 0rem;
   color: white;
   text-shadow: 1px 1px 4px black;
-  gap: 3rem;
+  gap: 0rem;
 }
 #left {
   display: flex;
@@ -53,13 +53,14 @@
 #temp,
 #tempVal {
   display: inline;
-  font-size: 7rem;
+  font-size: 4rem;
 }
 #temp > sup {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 #icon {
   margin-bottom: -20px;
+  width: 140px;
 }
 #summary {
   font-size: 1.2rem;
@@ -73,7 +74,7 @@
   background-color: white;
   margin-top: 1rem;
   width: 15rem;
-  height: 2rem;
+  height: 1rem;
   border-radius: 5px;
   font-size: 1.5rem;
   padding: 0.5rem;
@@ -82,7 +83,7 @@
   cursor: pointer;
   border: 2px solid black;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1.3rem;
   margin: 1rem 0rem;
   user-select: none;
   background-color: white;
@@ -94,4 +95,15 @@
 }
 input:focus {
   outline: none;
+}
+#buttonsRow {
+  display: flex;
+  align-self: center;
+  gap: 1rem;
+}
+#tempToggle {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 11px;
 }

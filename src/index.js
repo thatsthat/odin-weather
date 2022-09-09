@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format } from "date-fns-tz";
 import "./style.css";
 
 const plainHTML = `<div id="container">
@@ -19,8 +19,20 @@ const plainHTML = `<div id="container">
     <div id="search">
       <div><input type="text" id="searchBox"></input>
       </div>
-      <div>
-        <button id='searchButton'>Search</button>
+      <div id="buttonsRow">
+        <div>
+          <button id='searchButton'>Search</button>
+        </div>
+          <div id="tempToggle">
+          <div>
+            <input type="radio" id="C" name="tFormat" value="C">
+            <label for="C">°C</label>
+          </div>
+          <div>
+            <input type="radio" id="F" name="tFormat" value="F">
+            <label for="F">°F</label>
+          </div>
+         </div>
       </div>
     </div>
     <div id='error'>Ooooops, city not found!</div>
@@ -59,12 +71,17 @@ async function getWeather(city) {
       { mode: "cors" }
     );
     const data = await response.json();
-    console.log(city.textContent);
     cityVal.textContent = data.name;
-    date.textContent = format(
-      new Date.UTC(data.dt + data.timezone),
-      "MMMM' 'd', ' H:mm"
-    );
+    const dt = new Date((data.dt + data.timezone) * 1000);
+    //date.textContent = new Date(data.dt * 1000);
+    const formattedDate = `${dt.toUTCString()}`;
+    date.textContent = dt.toLocaleString("en-GB", {
+      timeZone: "UTC",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
     temp.textContent = Math.round(data.main.temp);
     hum.textContent = data.main.humidity;
     feels.textContent = Math.round(data.main.feels_like);
